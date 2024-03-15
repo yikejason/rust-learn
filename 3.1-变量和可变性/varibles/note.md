@@ -69,11 +69,11 @@ let x = 5;
 - mut 必须赋值相同的变量类型 期待是 string 返回的却是 u32 类型 报错
   下面的类型报错
   fn main() {
-  let mut spaces = " ";
-  spaces = spaces.len();
+    let mut spaces = " ";
+    spaces = spaces.len();
   }
   正确
   fn main() {
-  let mut spaces = " ";
-  let spaces = spaces.len();
+    let mut spaces = " ";
+    let spaces = spaces.len();
   }
