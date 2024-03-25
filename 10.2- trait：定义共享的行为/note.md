@@ -284,5 +284,31 @@ pub fn notify(flag: bool) -> impl Summary {
 
 ## 使用 trait Bound 有条件的实现方法
 - 在使用泛型类型参数的impl块上使用 Trait bound， 我们可以有条件的为实现了特定 Trait 的类型来实现方法
+eg:
+use std::fmt::Display;
+
+struct Pair<T> {
+    x: T,
+    y: T,
+}
+
+impl<T> Pair<T> {
+    fn new(x: T, y: T) -> Self {
+        Self { x, y }
+    }
+}
+
+impl<T: Display + PartialOrd> Pair<T> {
+    fn cmp_display(&self) {
+        if self.x >= self.y {
+            println!("The largest number is x = {}", self.x);
+        } else {
+            println!("The largest number is y = {}", self.y);
+        }
+    }
+}
+
+- 也可以为实现了其他 Trait 的任意类型有条件的实现某个trait
+- 为满足 Trait Bound 的所有类型上实现 Trait 叫做覆盖实现
 
 
