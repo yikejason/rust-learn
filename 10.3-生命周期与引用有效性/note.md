@@ -52,4 +52,33 @@ fn longest<'a>(x: &'a str, y: &'a str) -> &'a str {
 - 生命周期'a的实际生命周期是：x 和 y两个生命周期中较小的那个
 
 ## 深入理解生命周期
+- 指定声明周期参数的方式依赖于函数所做的事情
+- 从函数返回引用时，返回类型的生命周期参数需要与其中一个参数的生命周期匹配
+- 如果返回的引用没有指向任何参数，那么它只能引用函数内创建的值：
+   - 这就是悬垂引用：该值在函数结束时就走出了作用域
+
+## Struct 定义中的生命周期标注
+- Struct里可包括：
+  - 自持有的类型
+  - 引用：需要在每个引用上添加声明周期标注
+eg:
+struct ImportantExcerpt<'a> {
+    part: &'a str,
+}
+
+fn main() {
+    let novel = String::from("Call me IsHmael, some years");
+    let first_sentence = novel.split('.').next().expect("Could not find a");
+    let i = ImportantExcerpt {
+        part: first_sentence,
+    };
+}
+
+
+## 生命周期的省略
+- 我们知道：
+  - 每个引用都有生命周期
+  - 需要为使用生命周期的函数或struct指定生命周期参数
+
+  
 
