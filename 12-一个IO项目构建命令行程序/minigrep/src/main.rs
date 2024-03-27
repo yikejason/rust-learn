@@ -5,10 +5,10 @@ use minigrep::Config;
 
 fn main() {
     // 接收命令行参数
-    let args: Vec<String> = env::args().collect();
+    // let args: Vec<String> = env::args().collect();
 
     // 解析参数
-    let config = Config::new(&args).unwrap_or_else(|err| {
+    let config = Config::new(env::args()).unwrap_or_else(|err| {
         eprintln!("Problem parsing arguments: {}", err);
         process::exit(1);
     });
