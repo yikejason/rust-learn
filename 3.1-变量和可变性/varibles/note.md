@@ -1,42 +1,28 @@
 # 变量和可变性
-
-- 默认情况下变量是不可变的
+# 变量
+- 默认情况下变量是不可变的，在Rust中，将值和变量关联的过程称为绑定，变量的绑定可以使用let关键字
+eg:
   fn main() {
-  let x = 5;
-  println!("The value of x is: {}", x);
-  x = 6;
-  println!("The value of x is: {}", x);
+    let x = 5;
+    println!("The value of x is: {}", x);
+    x = 6;
+    println!("The value of x is: {}", x);
   }
 
 使用 cargo run 运行 会报一个变量不可二次赋值的错
 
-$ cargo run
-Compiling variables v0.1.0 (file:///projects/variables)
-error[E0384]: cannot assign twice to immutable variable `x`
---> src/main.rs:4:5
-|
-2 | let x = 5;
-| -
-| |
-| first assignment to `x`
-| help: consider making this binding mutable: `mut x`
-3 | println!("The value of x is: {}", x);
-4 | x = 6;
-| ^^^^^ cannot assign twice to immutable variable
-
-For more information about this error, try `rustc --explain E0384`.
-error: could not compile `variables` due to previous error
-
 # 可变性
 
 - 我们可以在变量名前加上 mut 使得他们可变，增加 mut 的操作还向以后读代码的人传达了代码的其他部分将会改变这个变量值。
-
+eg:
 fn main() {
-let mut x = 5;
-println!("The value of x is: {}", x);
-x = 6;
-println!("The value of x is: {}", x);
+  let mut x = 5;
+  println!("The value of x is: {}", x);
+  x = 6;
+  println!("The value of x is: {}", x);
 }
+
+使用 cargo run 可以正常运行
 
 # 常量
 
