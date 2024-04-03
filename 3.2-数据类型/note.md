@@ -96,7 +96,7 @@ assert_eq!(u8::MAX.saturating_add(127), u8::MAX);
 - 元组长度固定，一旦声明无法增长或缩小
 - let tup: (i32, f64, u8) = (500, 6.4, 1);
 
-- 获取元组中的值用模式结构
+- 获取元组中的值用模式解构
 fn main () {
   let tup: (i32, f64, u8) = (500, 6.4, 1);
   let (x, y, z) = tup;
@@ -127,7 +127,7 @@ fn main () {
   let second = a[1];
 }
 
-- 无效的数组索引访问Rust程序会panic
+- 无效的数组索引访问Rust程序会panic (index of bound) 索引越界
 
 
 
